@@ -464,7 +464,7 @@
     <div class="main-content" id="mainContent">
 
     <div class="back-wrapper">
-        <button class="back-btn" onclick="location.href='/index.html'">
+        window.location.replace("index.html");
             ← Back
         </button>
     </div>
@@ -500,7 +500,7 @@
 
     <div id="posterModal" class="poster-modal">
         <div class="poster-content">
-            <img src="/InShot_20260214_140423111.jpg" alt="Poster">
+            <img src="InShot_20260214_140423111.jpg" alt="Poster">
             <span class="close-poster" onclick="closePoster()">✕</span>
         </div>
     </div>
@@ -511,11 +511,22 @@
     <div id="gameModal" class="game-modal" onclick="closeGameModal(event)">
         <div class="game-card" onclick="event.stopPropagation()">
             <h2>Choose Your Game 💕</h2>
-            <div class="game-options">
-                <div class="game-option" onclick="location.href='/Sliding Puzzle.html'">1. Sliding Puzzle 💖</div>
-                <div class="game-option" onclick="location.href='/catch the hearts.html'">2. Catch the Hearts ❤️</div>
-                <div class="game-option" onclick="location.href='/memory.html'">3. Romantic Memory Game 💌</div>
-            </div>
+            
+                <div class="game-option" 
+     onclick="location.replace('sliding-puzzle.html')">
+     1. Sliding Puzzle 💖
+</div>
+
+<div class="game-option" 
+     onclick="location.replace('catch-the-hearts.html')">
+     2. Catch the Hearts ❤️
+</div>
+
+<div class="game-option" 
+     onclick="location.replace('memory.html')">
+     3. Romantic Memory Game 💌
+</div>
+            
             <div class="close-game" onclick="closeGameModal()">✕ Close</div>
         </div>
     </div>
