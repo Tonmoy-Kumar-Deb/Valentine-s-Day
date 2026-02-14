@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Romantic Sliding Puzzle</title>
   <style>
     body {
   margin: 0;
-  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;   /* prevents scroll */
   font-family: 'Courier New', monospace;
   background: #ffffff;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding-top: 15px;
-  position: relative;
+  justify-content: center;   /* vertical center */
+  align-items: center;       /* horizontal center */
   color: #d00000;
 }
     button.back-btn {
@@ -47,16 +49,16 @@ button.back-btn:hover {
       font-weight: bold;
       margin-bottom: 10px;
     }
-   #puzzle {
+#puzzle {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
-  width: calc(100% - 20px);   /* 10px space each side */
-  max-width: 400px;           /* optional limit */
-  margin-top: 15px;
+  width: 90vw;           /* responsive width */
+  max-width: 400px;
+  aspect-ratio: 1 / 1;   /* perfect square */
   padding: 10px;
   border: 3px solid #d00000;
-  border-radius: 12px;
+  border-radius: 16px;
   background: #ffffff;
   box-sizing: border-box;
 }
@@ -64,16 +66,14 @@ button.back-btn:hover {
     
 .tile {
   width: 100%;
-  aspect-ratio: 1 / 1;   /* makes square */
+  aspect-ratio: 1 / 1;
   background: #d00000;
-  border-radius: 8px;
+  border-radius: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 6vw;        /* responsive text */
+  font-size: 6vw;
   color: white;
-  cursor: pointer;
-  transition: 0.2s ease;
 }
     .blank {
   background: #ffffff;
