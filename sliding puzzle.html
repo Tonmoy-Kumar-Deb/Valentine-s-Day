@@ -17,6 +17,7 @@
   justify-content: center;   /* vertical center */
   align-items: center;       /* horizontal center */
   color: #d00000;
+  overflow-x: hidden;
 }
     button.back-btn {
   position: fixed;
@@ -53,27 +54,36 @@ button.back-btn:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 4px;
-  width: 90vw;           /* responsive width */
-  max-width: 400px;
-  aspect-ratio: 1 / 1;   /* perfect square */
-  padding: 10px;
+  width: 92vw;              /* 4% margin each side */
+  max-width: 380px;
+  aspect-ratio: 1 / 1;      /* perfect square */
+  margin: 0 auto;
+  padding: 8px;
   border: 3px solid #d00000;
   border-radius: 16px;
   background: #ffffff;
   box-sizing: border-box;
+  overflow: hidden;         /* prevents shifting */
 }
 
     
 .tile {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 100%;
   background: #d00000;
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 6vw;
+  font-size: clamp(18px, 5vw, 28px);
   color: white;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.15s ease;
+}
+
+.tile:active {
+  transform: scale(0.95);
 }
     .blank {
   background: #ffffff;
