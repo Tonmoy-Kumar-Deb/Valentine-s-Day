@@ -47,32 +47,33 @@ button.back-btn:hover {
       font-weight: bold;
       margin-bottom: 10px;
     }
-    #puzzle {
+   #puzzle {
   display: grid;
-  grid-template-columns: repeat(4, 80px);
-  grid-gap: 4px;
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+  width: calc(100% - 20px);   /* 10px space each side */
+  max-width: 400px;           /* optional limit */
   margin-top: 15px;
-  padding: 15px;
+  padding: 10px;
   border: 3px solid #d00000;
   border-radius: 12px;
   background: #ffffff;
+  box-sizing: border-box;
 }
-    .tile {
-  width: 80px;
-  height: 80px;
+
+    
+.tile {
+  width: 100%;
+  aspect-ratio: 1 / 1;   /* makes square */
   background: #d00000;
   border-radius: 8px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 28px;
+  font-size: 6vw;        /* responsive text */
   color: white;
   cursor: pointer;
   transition: 0.2s ease;
-}
-.tile:hover {
-  transform: scale(1.05);
 }
     .blank {
   background: #ffffff;
