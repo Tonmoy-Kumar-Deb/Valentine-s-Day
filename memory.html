@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Romantic Memory Game</title>
   <style>
   .game-title {
@@ -22,6 +23,9 @@
   position: relative;
   font-family: 'Courier New', monospace;
   color: #d00000;
+  overflow: hidden;
+  touch-action: manipulation;
+  justify-content: center;
 }
     button.back-btn {
   position: fixed;
@@ -50,35 +54,48 @@ button.back-btn:hover {
       margin-top: 50px;
     }
     #game {
+  width: 90vmin;
+  height: 90vmin;              /* Makes it perfect square */
+  max-width: 400px;
+  max-height: 400px;
+
   display: grid;
-  grid-template-columns: repeat(4, 70px);
-  grid-gap: 12px;
-  justify-content: center;
-  padding: 20px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+
+  gap: 3%;
+  padding: 4%;
+
   border: 3px solid #d00000;
-  border-radius: 12px;
+  border-radius: 16px;
   background: #ffffff;
-  margin: 0 auto;
+
+  margin: auto;
   display: none;
   opacity: 0;
-  transition: opacity 1s ease;
+  transition: opacity 0.8s ease;
+
+  box-sizing: border-box;
 }
     .card {
-  width: 70px;
-  height: 70px;
+  width: 100%;
+  height: 100%;
+
   background: #d00000;
-  border-radius: 8px;
+  border-radius: 12px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 22px;
+
+  font-size: 6vmin;
   color: white;
+
   cursor: pointer;
   user-select: none;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: all 0.3s ease;
-}
+
+  transition: all 0.25s ease;
+    }
 
 .card:hover {
   transform: scale(0.9);
