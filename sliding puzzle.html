@@ -273,58 +273,38 @@ button.back-btn:hover {
     location.replace("calendar.html");
   }, 2000);
     }
+// AUDIO
 let audio = new Audio("love.mp3");
 audio.loop = true;
 
 let savedTime = localStorage.getItem("musicTime");
-let wasPlaying = localStorage.getItem("musicPlaying") === "true";
-
 if (savedTime) {
     audio.currentTime = parseFloat(savedTime);
 }
 
-if (wasPlaying) {
-    audio.play().catch(()=>{});
-    document.getElementById("musicBtn").innerText = "🎵 ON";
-} else {
-    document.getElementById("musicBtn").innerText = "🎵 OFF";
-}
-
-function toggleMusic() {
-    const btn = document.getElementById("musicBtn");
-
-    if (!audio.paused) {
-        audio.pause();
-        btn.innerText = "🎵 OFF";
-        localStorage.setItem("musicPlaying", "false");
-    } else {
-        audio.play();
-        btn.innerText = "🎵 ON";
-        localStorage.setItem("musicPlaying", "true");
-    }
-}
-
+// Save audio progress
 setInterval(() => {
     localStorage.setItem("musicTime", audio.currentTime);
 }, 1000);
-    // Tap to start + countdown
-    startOverlay.addEventListener("click", () => {
-      audio.play().catch(()=>{});  // Using your audio file
-      let count = 3;
-      countdownEl.textContent = count;
-      const interval = setInterval(() => {
+
+// TAP TO START + COUNTDOWN
+startOverlay.addEventListener("click", () => {
+    audio.play().catch(()=>{}); // only play here
+    let count = 3;
+    countdownEl.textContent = count;
+    const interval = setInterval(() => {
         count--;
         if (count === 0) {
-          clearInterval(interval);
-          startOverlay.style.display = "none";
-          createPuzzle();
-          shuffleTiles();
-          startTimer();
+            clearInterval(interval);
+            startOverlay.style.display = "none";
+            createPuzzle();
+            shuffleTiles();
+            startTimer();
         } else {
-          countdownEl.textContent = count;
+            countdownEl.textContent = count;
         }
-      }, 1000);
-    }, { once: true });
+    }, 1000);
+}, { once: true });
     
   </script>
 </body>
