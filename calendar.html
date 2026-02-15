@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Love Gallery</title>
     <style>
-   
+   .page-title {
+    margin-top: 80px;   /* pushes below buttons */
+    text-align: center;
+    font-size: 2.3rem;
+    color: #b00000;
+    font-family: 'Playfair Display', serif;
+   }
 .back-btn,
 .music-btn {
   -webkit-user-select: none;  /* Safari */
@@ -665,15 +671,28 @@ function closePoster() {
 audio.loop = true;
 
 let savedTime = localStorage.getItem("musicTime");
+let isPlaying = false;
 
 if (savedTime) {
-  audio.currentTime = savedTime;
+    audio.currentTime = savedTime;
 }
 
-audio.play().catch(()=>{});
+function toggleMusic() {
+    const btn = document.getElementById("musicBtn");
+
+    if (isPlaying) {
+        audio.pause();
+        btn.innerText = "🎵 OFF";
+        isPlaying = false;
+    } else {
+        audio.play();
+        btn.innerText = "🎵 ON";
+        isPlaying = true;
+    }
+}
 
 setInterval(() => {
-  localStorage.setItem("musicTime", audio.currentTime);
+    localStorage.setItem("musicTime", audio.currentTime);
 }, 1000);
     </script>
 
