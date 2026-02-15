@@ -677,23 +677,30 @@ function closePoster() {
 audio.loop = true;
 
 let savedTime = localStorage.getItem("musicTime");
-let isPlaying = false;
+let wasPlaying = localStorage.getItem("musicPlaying") === "true";
 
 if (savedTime) {
-    audio.currentTime = savedTime;
+    audio.currentTime = parseFloat(savedTime);
+}
+
+if (wasPlaying) {
+    audio.play().catch(()=>{});
+    document.getElementById("musicBtn").innerText = "🎵 ON";
+} else {
+    document.getElementById("musicBtn").innerText = "🎵 OFF";
 }
 
 function toggleMusic() {
     const btn = document.getElementById("musicBtn");
 
-    if (isPlaying) {
+    if (!audio.paused) {
         audio.pause();
         btn.innerText = "🎵 OFF";
-        isPlaying = false;
+        localStorage.setItem("musicPlaying", "false");
     } else {
         audio.play();
         btn.innerText = "🎵 ON";
-        isPlaying = true;
+        localStorage.setItem("musicPlaying", "true");
     }
 }
 
