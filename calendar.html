@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Love Gallery</title>
     <style>
-   .back-wrapper {
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    padding-left: 20px;   /* space from left edge */
-    margin-bottom: 20px;
-}
+   
+.back-btn,
+.music-btn {
+  -webkit-user-select: none;  /* Safari */
+  -ms-user-select: none;      /* Old IE */
+  user-select: none;          /* Standard */
 
+  -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight */
+}
 
 .event-display {
     text-align: center;
@@ -47,6 +48,9 @@
             position: relative;
             margin: 0;
             padding: 0;
+            user-select: none;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: transparent;
         }
 
         /* Shake animation */
@@ -442,10 +446,38 @@
                 gap: 6px;
             }
         }
+        .back-btn,
+.music-btn {
+  position: fixed;
+  top: 15px;
+  padding: 8px 18px;
+  font-size: 14px;
+  border: 2px solid #d00000;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #d00000;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.back-btn {
+  left: 15px;
+}
+
+.music-btn {
+  right: 15px;
+}
+
+.back-btn:hover,
+.music-btn:hover {
+  background: #d00000;
+  color: #ffffff;
+            }
     </style>
 </head>
 <body>
-    <button onclick="audio.play()">Start Music</button>
+    
     <!-- Hearts Background -->
     <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 12s;"></div>
     <div class="heart" style="left: 20%; animation-delay: 2s; animation-duration: 10s;"></div>
@@ -463,11 +495,9 @@
     <!-- Back Button -->
     <div class="main-content" id="mainContent">
 
-    <div class="back-wrapper">
-        <button class="back-btn" onclick="location.replace('index.html')">
-            ← Back
-        </button>
-    </div>
+    <button class="back-btn" onclick="location.replace('calendar.html')">⬅ Back</button>
+
+<button class="music-btn" onclick="startMusic()">🎵 Start</button>
 
     <!-- Main Content -->
    
