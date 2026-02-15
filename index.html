@@ -222,6 +222,40 @@ for(let i=0;i<18;i++){
   h.style.animationDuration=(9+Math.random()*6)+"s";
   document.body.appendChild(h);
 }
+  let audio = new Audio("love.mp3");
+audio.loop = true;
+
+let savedTime = localStorage.getItem("musicTime");
+let wasPlaying = localStorage.getItem("musicPlaying") === "true";
+
+if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+}
+
+if (wasPlaying) {
+    audio.play().catch(()=>{});
+    document.getElementById("musicBtn").innerText = "🎵 ON";
+} else {
+    document.getElementById("musicBtn").innerText = "🎵 OFF";
+}
+
+function toggleMusic() {
+    const btn = document.getElementById("musicBtn");
+
+    if (!audio.paused) {
+        audio.pause();
+        btn.innerText = "🎵 OFF";
+        localStorage.setItem("musicPlaying", "false");
+    } else {
+        audio.play();
+        btn.innerText = "🎵 ON";
+        localStorage.setItem("musicPlaying", "true");
+    }
+}
+
+setInterval(() => {
+    localStorage.setItem("musicTime", audio.currentTime);
+}, 1000);
 </script>
 
 </body>
