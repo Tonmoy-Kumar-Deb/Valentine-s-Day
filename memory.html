@@ -183,6 +183,22 @@ button.back-btn:hover {
 
 
   <script>
+    let audio = new Audio("love.mp3");
+audio.loop = true;
+
+let savedTime = localStorage.getItem("musicTime");
+let wasPlaying = localStorage.getItem("musicPlaying") === "true";
+
+if (savedTime) {
+    audio.currentTime = parseFloat(savedTime);
+}
+
+if (wasPlaying) {
+    audio.play().catch(()=>{});
+    document.getElementById("musicBtn").innerText = "🎵 ON";
+} else {
+    document.getElementById("musicBtn").innerText = "🎵 OFF";
+    }
     const allEmojis = ["❤️","🌹","🍫","💋","🥰","💌","🌸","🎁","😍","💖"];
     const game = document.getElementById("game");
     let flippedCards = [];
@@ -314,22 +330,7 @@ button.back-btn:hover {
         }
       }, 100);
     }
-    let audio = new Audio("love.mp3");
-audio.loop = true;
-
-let savedTime = localStorage.getItem("musicTime");
-let wasPlaying = localStorage.getItem("musicPlaying") === "true";
-
-if (savedTime) {
-    audio.currentTime = parseFloat(savedTime);
-}
-
-if (wasPlaying) {
-    audio.play().catch(()=>{});
-    document.getElementById("musicBtn").innerText = "🎵 ON";
-} else {
-    document.getElementById("musicBtn").innerText = "🎵 OFF";
-}
+    
 
 function toggleMusic() {
     const btn = document.getElementById("musicBtn");
