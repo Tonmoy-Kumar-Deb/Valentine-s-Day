@@ -196,11 +196,11 @@ button.back-btn:hover {
     startBtn.addEventListener("click", startGame);
 
     function startGame() {
-      startOverlay.style.display = "none";
-      game.style.display = "grid";
-      fadeInGame();
-      playMusicFadeIn();
-      initializeCards();
+  startOverlay.style.display = "none";  // hide overlay
+  game.style.display = "grid";           // show game
+  setTimeout(() => game.style.opacity = 1, 100);  // fade in
+  playMusicFadeIn();                      // start music
+  initializeCards();                      // create cards
     }
 
     function fadeInGame() {
@@ -208,17 +208,17 @@ button.back-btn:hover {
     }
 
     function playMusicFadeIn() {
-      backgroundMusic.volume = 0;
-      backgroundMusic.play().catch(() => {});
-      let vol = 0;
-      const fade = setInterval(() => {
-        if (vol < 1) {
-          vol += 0.05;
-          backgroundMusic.volume = vol;
-        } else {
-          clearInterval(fade);
-        }
-      }, 100);
+  audio.volume = 0;
+  audio.play().catch(()=>{});
+  let vol = 0;
+  const fade = setInterval(() => {
+    if (vol < 1) {
+      vol += 0.05;
+      audio.volume = vol;
+    } else {
+      clearInterval(fade);
+    }
+  }, 100);
     }
 
     function initializeCards() {
