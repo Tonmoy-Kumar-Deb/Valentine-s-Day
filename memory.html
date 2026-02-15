@@ -258,7 +258,10 @@ button.back-btn:hover {
                 modal.style.display = "flex";
                 modalText.innerHTML = `
                   <p>🎉 Congratulations! You matched all cards!</p>
-                  <p><a onclick="location.reload()">Replay</a> | <a onclick="exitGame()">Exit</a></p>
+       <p>
+  <a onclick="location.reload()">Replay</a> | 
+  <a onclick="exitGame()">Exit</a>
+</p>
                 `;
               }
             }, 1000);
@@ -276,11 +279,26 @@ button.back-btn:hover {
     }
 
     function exitGame() {
-      fadeOutMusic();
-      modalText.innerHTML = "<p>Thank you for playing ❤️</p>";
-      setTimeout(() => {
+    // Fade out music
+    let vol = audio.volume;
+    const fade = setInterval(() => {
+        if (vol > 0) {
+            vol -= 0.05;
+            audio.volume = vol;
+        } else {
+            audio.pause();
+            audio.currentTime = 0;
+            clearInterval(fade);
+        }
+    }, 50);
+
+    // Show thank you text in modal
+    modalText.innerHTML = "<p>Thank you for playing ❤️</p>";
+
+    // Redirect after 2 seconds
+    setTimeout(() => {
         location.replace("calendar.html");
-      }, 2000);
+    }, 2000);
     }
 
     function fadeOutMusic() {
