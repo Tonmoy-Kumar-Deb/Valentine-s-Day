@@ -192,25 +192,31 @@ button.back-btn:hover {
     const modal = document.getElementById("endModal");
     const modalText = document.getElementById("modalText");
     const startOverlay = document.getElementById("startOverlay");
-    let audio = new Audio("love.mp3");
-audio.loop = true;
-
-let savedTime = localStorage.getItem("musicTime");
-let wasPlaying = localStorage.getItem("musicPlaying") === "true";
-
-if (savedTime) {
-    audio.currentTime = parseFloat(savedTime);
-}
-
-if (wasPlaying) {
-    audio.play().catch(()=>{});
-    document.getElementById("musicBtn").innerText = "🎵 ON";
-} else {
-    document.getElementById("musicBtn").innerText = "🎵 OFF";
-    }
+    document.addEventListener("DOMContentLoaded", () => {
     const startBtn = document.getElementById("startBtn");
 
     startBtn.addEventListener("click", startGame);
+
+    // Music setup
+    let audio = new Audio("love.mp3");  
+    audio.loop = true;  
+    let savedTime = localStorage.getItem("musicTime");  
+    let wasPlaying = localStorage.getItem("musicPlaying") === "true";  
+
+    if (savedTime) { 
+        audio.currentTime = parseFloat(savedTime); 
+    }  
+
+    if (wasPlaying) { 
+        audio.play().catch(()=>{}); 
+    }
+
+    setInterval(() => { 
+        localStorage.setItem("musicTime", audio.currentTime); 
+    }, 1000);
+
+    window.audio = audio; // make audio usable globally
+});
 
     function startGame() {
   startOverlay.style.display = "none";  // hide overlay
