@@ -273,26 +273,7 @@ button.back-btn:hover {
     location.replace("calendar.html");
   }, 2000);
     }
-
-    // Tap to start + countdown
-    startOverlay.addEventListener("click", () => {
-      audio.play().catch(()=>{});  // Using your audio file
-      let count = 3;
-      countdownEl.textContent = count;
-      const interval = setInterval(() => {
-        count--;
-        if (count === 0) {
-          clearInterval(interval);
-          startOverlay.style.display = "none";
-          createPuzzle();
-          shuffleTiles();
-          startTimer();
-        } else {
-          countdownEl.textContent = count;
-        }
-      }, 1000);
-    }, { once: true });
-    let audio = new Audio("love.mp3");
+let audio = new Audio("love.mp3");
 audio.loop = true;
 
 let savedTime = localStorage.getItem("musicTime");
@@ -326,6 +307,25 @@ function toggleMusic() {
 setInterval(() => {
     localStorage.setItem("musicTime", audio.currentTime);
 }, 1000);
+    // Tap to start + countdown
+    startOverlay.addEventListener("click", () => {
+      audio.play().catch(()=>{});  // Using your audio file
+      let count = 3;
+      countdownEl.textContent = count;
+      const interval = setInterval(() => {
+        count--;
+        if (count === 0) {
+          clearInterval(interval);
+          startOverlay.style.display = "none";
+          createPuzzle();
+          shuffleTiles();
+          startTimer();
+        } else {
+          countdownEl.textContent = count;
+        }
+      }, 1000);
+    }, { once: true });
+    
   </script>
 </body>
 </html>
