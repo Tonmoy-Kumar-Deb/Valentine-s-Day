@@ -265,13 +265,13 @@ button.back-btn:hover {
     }
 
     function exitGame() {
-      stopTimer();
-      backgroundMusic.pause();
-      backgroundMusic.currentTime = 0;
-      modalText.innerHTML = "<p>Thank you for playing ❤️</p>";
-      setTimeout(() => {
-        location.href = "/calendar.html";
-      }, 2000);
+  stopTimer();
+  backgroundMusic.pause();
+  backgroundMusic.currentTime = 0;
+  modalText.innerHTML = "<p>Thank you for playing ❤️</p>";
+  setTimeout(() => {
+    location.replace("calendar.html");
+  }, 2000);
     }
 
     // Tap to start + countdown
