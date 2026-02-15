@@ -183,7 +183,9 @@ button.back-btn:hover {
 
 
   <script>
-    
+    let audio;
+    let savedTime;
+    let wasplaying;
     const allEmojis = ["❤️","🌹","🍫","💋","🥰","💌","🌸","🎁","😍","💖"];
     const game = document.getElementById("game");
     let flippedCards = [];
@@ -198,10 +200,10 @@ button.back-btn:hover {
     startBtn.addEventListener("click", startGame);
 
     // Music setup
-    let audio = new Audio("love.mp3");  
+    audio = new Audio("love.mp3");  
     audio.loop = true;  
-    let savedTime = localStorage.getItem("musicTime");  
-    let wasPlaying = localStorage.getItem("musicPlaying") === "true";  
+    savedTime = localStorage.getItem("musicTime");  
+    wasPlaying = localStorage.getItem("musicPlaying") === "true";  
 
     if (savedTime) { 
         audio.currentTime = parseFloat(savedTime); 
