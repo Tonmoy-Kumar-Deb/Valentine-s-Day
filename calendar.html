@@ -445,7 +445,7 @@
     </style>
 </head>
 <body>
-
+    <button onclick="audio.play()">Start Music</button>
     <!-- Hearts Background -->
     <div class="heart" style="left: 10%; animation-delay: 0s; animation-duration: 12s;"></div>
     <div class="heart" style="left: 20%; animation-delay: 2s; animation-duration: 10s;"></div>
@@ -626,6 +626,20 @@ function openPoster() {
 function closePoster() {
     document.getElementById('posterModal').style.display = "none";
 }
+        let audio = new Audio("love.mp3");
+audio.loop = true;
+
+let savedTime = localStorage.getItem("musicTime");
+
+if (savedTime) {
+  audio.currentTime = savedTime;
+}
+
+audio.play().catch(()=>{});
+
+setInterval(() => {
+  localStorage.setItem("musicTime", audio.currentTime);
+}, 1000);
     </script>
 
 </body>
