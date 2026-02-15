@@ -172,7 +172,7 @@ button.back-btn:hover {
     <button id="startBtn">Tap to Start</button>
   </div>
 
-  <button class="back-btn" onclick="location.href='/calendar.html'">⬅ Back</button>
+  <button class="back-btn" onclick="location.replace('calendar.html')">⬅ Back</button>
   <h2 class="game-title">Match the Love Cards ❤️</h2>
   <div id="game"></div>
 
@@ -279,7 +279,7 @@ button.back-btn:hover {
       fadeOutMusic();
       modalText.innerHTML = "<p>Thank you for playing ❤️</p>";
       setTimeout(() => {
-        location.href = "/calendar.html";
+        location.replace("calendar.html");
       }, 2000);
     }
 
