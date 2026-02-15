@@ -183,6 +183,15 @@ button.back-btn:hover {
 
 
   <script>
+    
+    const allEmojis = ["❤️","🌹","🍫","💋","🥰","💌","🌸","🎁","😍","💖"];
+    const game = document.getElementById("game");
+    let flippedCards = [];
+    let matchedPairs = 0;
+    const backgroundMusic = document.getElementById("backgroundMusic");
+    const modal = document.getElementById("endModal");
+    const modalText = document.getElementById("modalText");
+    const startOverlay = document.getElementById("startOverlay");
     let audio = new Audio("love.mp3");
 audio.loop = true;
 
@@ -199,14 +208,6 @@ if (wasPlaying) {
 } else {
     document.getElementById("musicBtn").innerText = "🎵 OFF";
     }
-    const allEmojis = ["❤️","🌹","🍫","💋","🥰","💌","🌸","🎁","😍","💖"];
-    const game = document.getElementById("game");
-    let flippedCards = [];
-    let matchedPairs = 0;
-    const backgroundMusic = document.getElementById("backgroundMusic");
-    const modal = document.getElementById("endModal");
-    const modalText = document.getElementById("modalText");
-    const startOverlay = document.getElementById("startOverlay");
     const startBtn = document.getElementById("startBtn");
 
     startBtn.addEventListener("click", startGame);
