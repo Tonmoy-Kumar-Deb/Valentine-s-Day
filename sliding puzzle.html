@@ -276,7 +276,7 @@ button.back-btn:hover {
 
     // Tap to start + countdown
     startOverlay.addEventListener("click", () => {
-      backgroundMusic.play().catch(()=>{});
+      audio.play().catch(()=>{});  // Using your audio file
       let count = 3;
       countdownEl.textContent = count;
       const interval = setInterval(() => {
